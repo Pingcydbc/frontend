@@ -15,9 +15,9 @@ export default function Home() {
             <div className="carousel-item active">
               <img src="/img/slide1.png" className="d-block w-100 " alt="Slide 1" />
             </div>
-            <div className="carousel-item">
+            {/* <div className="carousel-item">
               <img src="/img/slide2.png" className="d-block w-100 " alt="Slide 2" />
-            </div>
+            </div> */}
             <div className="carousel-item">
               <img src="/img/slide3.png" className="d-block w-100 " alt="Slide 2" />
             </div>
