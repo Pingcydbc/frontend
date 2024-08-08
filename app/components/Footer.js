@@ -5,9 +5,9 @@ const Footer = () => {
   return (
     <footer class="py-5" id="footer">
           <div class="row">
-            <div class="col-4">
+            <div class="col-4 px-5">
               <h5>About</h5>
-              <p class="fw-light">วิทยาลัยเทคนิคเชียงใหม่ <br></br>เลขที่ 9 ถ.เวียงแก้ว ต.ศรีภูมิ อ.เมืองเชียงใหม่จ.เชียงใหม่ 50200 <br></br>โทร. 053-217-708-9<br></br>นักศึกษาแผนกสารสนเทศ สาขาวิชานักพัฒนาซอฟต์แวร์</p>
+              <p class="fw-light ">วิทยาลัยเทคนิคเชียงใหม่ <br></br>เลขที่ 9 ถ.เวียงแก้ว ต.ศรีภูมิ อ.เมืองเชียงใหม่จ.เชียงใหม่ 50200 <br></br>โทร. 053-217-708-9<br></br>นักศึกษาแผนกสารสนเทศ สาขาวิชานักพัฒนาซอฟต์แวร์</p>
             </div>
       
             <div class="col-2">
@@ -44,7 +44,7 @@ const Footer = () => {
             </div>
           </div>
       
-          <div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top border-dark border-3">
+          <div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top border-dark border-3 px-5">
             <p>© 2024 Company, Inc. All rights reserved.</p>
           </div>
         </footer>

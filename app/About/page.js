@@ -2,18 +2,20 @@ import Head from 'next/head';
 
 export default function Home() {
   return (
-    <div>
-      <div className="about-section">
-        <div className="container">
-          <h2>About Us</h2>
-           </div>
+    <div className="container">
+      <div className="about-section py-4">
+        <h2>About Us</h2>
       </div>
 
       <div className="row row-cols-1 gy-5 wow fadeInUp" style={{ visibility: 'visible', animationName: 'fadeInUp' }}>
         <div className="col">
           <article className="post-items">
             <div className="post-content">
-              <p className="has-medium-font-size"><strong>วิทยาลัยเทคนิคเชียงใหม่ สถาบันการอาชีวศึกษาภาคเหนือ 1</strong><br />เลขที่ 9 ถนนเวียงแก้ว ตำบลศรีภูมิ อำเภอเมืองเชียงใหม่ จังหวัดเชียงใหม่ 50200<br /><strong>โทรศัพท์</strong> : 053 217 708 | <strong>โทรสาร</strong> : 053 221 599 | <strong>อีเมล :</strong> ctc@cmtc.ac.th</p>
+              <p className="has-medium-font-size">
+                <strong>วิทยาลัยเทคนิคเชียงใหม่ สถาบันการอาชีวศึกษาภาคเหนือ 1</strong><br />
+                เลขที่ 9 ถนนเวียงแก้ว ตำบลศรีภูมิ อำเภอเมืองเชียงใหม่ จังหวัดเชียงใหม่ 50200<br />
+                <strong>โทรศัพท์</strong> : 053 217 708 | <strong>โทรสาร</strong> : 053 221 599 | <strong>อีเมล :</strong> ctc@cmtc.ac.th
+              </p>
               
               <div className="wp-block-columns has-x-large-font-size is-layout-flex wp-container-core-columns-is-layout-2 wp-block-columns-is-layout-flex">
                 <div className="wp-block-column is-layout-flow wp-block-column-is-layout-flow">
@@ -30,7 +32,6 @@ export default function Home() {
           </article>
         </div>
       </div>
-
     </div>
   );
 }
