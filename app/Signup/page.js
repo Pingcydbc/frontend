@@ -1,40 +1,103 @@
-// Signup.js
+'use client';
+import { useState } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap-icons/font/bootstrap-icons.css'; // นำเข้าไอคอน
 
-import Head from 'next/head';
-import 'bootstrap/dist/css/bootstrap.min.css'; // นำเข้า Bootstrap CSS
+export default function Page() {
 
-export default function Signup() {
+  const [firstname, setFirstName] = useState('');
+  const [lastname, setLastName] = useState('');
+  const [username, setUserName] = useState('');
+  const [password, setPassWord] = useState('');
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const res = await fetch('http://localhost:3000/api/users', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ firstname, lastname, username, password }),
+    });
+
+    const result = await res.json();
+    console.log(result);
+  };
+
   return (
-    <div className="container">
-      <Head>
-        <title>Sign Up</title>
-        <meta name="description" content="Sign up for a new account" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <main className="d-flex justify-content-center align-items-center">
-        <div className="card p-4">
-          <h1 className="text-center mb-4">Sign Up</h1>
-          <form className="needs-validation">
-            <div className="form-group">
-              <label htmlFor="fullname">Full Name:</label>
-              <input type="text" className="form-control" id="fullname" name="fullname" required />
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="email">Email Address:</label>
-              <input type="email" className="form-control" id="email" name="email" required />
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="password">Password:</label>
-              <input type="password" className="form-control" id="password" name="password" required />
-            </div>
-
-            <button type="submit" className="btn btn-primary btn-block">Sign Up</button>
-          </form>
+    <>
+      <br /><br /><br />
+      <div className="container">
+        <div className="card">
+          <div className="card-header bg-dark text-white">
+            SignUp Form
+          </div>
+          <div className="card-body">
+            <form className="row g-3" onSubmit={handleSubmit}>
+              <div className="col-md-6">
+                <label htmlFor="firstname" className="form-label">FirstName</label>
+                <div className="input-group">
+                  <span className="input-group-text bg-dark text-white" id="basic-addon1"><i className="bi bi-person"></i></span>
+                  <input
+                    id="firstname"
+                    type="text"
+                    className="form-control"
+                    value={firstname}
+                    onChange={(e) => setFirstName(e.target.value)}
+                    required
+                  />
+                </div>
+              </div>
+              <div className="col-md-6">
+                <label htmlFor="lastname" className="form-label">LastName</label>
+                <div className="input-group">
+                  <span className="input-group-text bg-dark text-white" id="basic-addon2"><i className="bi bi-person-fill"></i></span>
+                  <input
+                    id="lastname"
+                    type="text"
+                    className="form-control"
+                    value={lastname}
+                    onChange={(e) => setLastName(e.target.value)}
+                    required
+                  />
+                </div>
+              </div>
+              <div className="col-md-6">
+                <label htmlFor="username" className="form-label">Username</label>
+                <div className="input-group">
+                  <span className="input-group-text bg-dark text-white" id="basic-addon3"><i className="bi bi-person-lines-fill"></i></span>
+                  <input
+                    id="username"
+                    type="text"
+                    className="form-control"
+                    value={username}
+                    onChange={(e) => setUserName(e.target.value)}
+                    required
+                  />
+                </div>
+              </div>
+              <div className="col-md-6">
+                <label htmlFor="password" className="form-label">Password</label>
+                <div className="input-group">
+                  <span className="input-group-text bg-dark text-white" id="basic-addon4"><i className="bi bi-lock-fill"></i></span>
+                  <input
+                    id="password"
+                    type="password"
+                    className="form-control"
+                    value={password}
+                    onChange={(e) => setPassWord(e.target.value)}
+                    required
+                  />
+                </div>
+              </div>
+              <div className="col-12">
+                <button type="submit" className="btn btn-outline-dark"><i className="bi bi-box-arrow-right"></i> Sign Up</button>
+              </div>
+            </form>
+          </div>
         </div>
-      </main>
-    </div>
+      </div>
+    </>
   );
 }

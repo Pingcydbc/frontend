@@ -11,36 +11,36 @@ const Navbar = () => {
       <div className="d-flex align-items-center">
         <ul className="nav nav-pills">
           <li className="nav-item">
-            <Link href="/" legacyBehavior>
-              <a className="nav-link active" aria-current="page">Home</a>
+            <Link href="./" legacyBehavior>
+              <a className="nav-link text-dark" aria-current="page">Home</a>
             </Link>
           </li>
           <li className="nav-item">
             <Link href="/About" legacyBehavior>
-              <a className="nav-link">About</a>
+              <a className="nav-link text-dark">About</a>
             </Link>
           </li>
           <li className="nav-item">
             <Link href="/Service" legacyBehavior>
-              <a className="nav-link">Service</a>
+              <a className="nav-link text-dark">Service</a>
             </Link>
           </li>
           <li className="nav-item">
             <Link href="/Contact" legacyBehavior>
-              <a className="nav-link">Contact</a>
+              <a className="nav-link text-dark">Contact</a>
             </Link>
           </li>
-          <li className="nav-item">
+          {/* <li className="nav-item">
             <Link href="/User" legacyBehavior>
-              <a className="nav-link">User</a>
+              <a className="nav-link text-dark">User</a>
             </Link>
-          </li>
+          </li> */}
         </ul>
         <Link href="/Signin" legacyBehavior>
-          <a className="btn btn-outline-primary me-2">Sign in</a>
+          <a className="btn btn-outline-dark me-2">Sign in</a>
         </Link>
         <Link href="/Signup" legacyBehavior>
-          <a className="btn btn-primary">Sign up</a>
+          <a className="btn btn-outline-dark me-2">Sign up</a>
         </Link>
       </div>
     </header>
