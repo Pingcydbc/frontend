@@ -8,7 +8,7 @@ export default function Page() {
   useEffect(() => {
     async function getUsers() {
       try {
-        const res = await fetch('frontend042chayodom.vercel.app/api/users');
+        const res = await fetch('https://backend-alpha-wheat.vercel.app/api/users');
         if (!res.ok) {
           console.error('Failed to fetch data');
           return;
