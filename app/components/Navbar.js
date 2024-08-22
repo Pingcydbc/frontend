@@ -30,11 +30,11 @@ const Navbar = () => {
               <a className="nav-link text-dark">Contact</a>
             </Link>
           </li>
-          {/* <li className="nav-item">
-            <Link href="/User" legacyBehavior>
-              <a className="nav-link text-dark">User</a>
+          <li className="nav-item">
+            <Link href="/Users" legacyBehavior>
+              <a className="nav-link text-dark">Users</a>
             </Link>
-          </li> */}
+          </li>
         </ul>
         <Link href="/Signin" legacyBehavior>
           <a className="btn btn-outline-dark me-2">Sign in</a>
