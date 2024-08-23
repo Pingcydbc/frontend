@@ -1,15 +1,22 @@
 'use client';
 import { useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
+import Swal from 'sweetalert2';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap-icons/font/bootstrap-icons.css'; // นำเข้าไอคอน
+import 'bootstrap-icons/font/bootstrap-icons.css';
 
 export default function Page({ params }) {
   const { id } = params;
+  const router = useRouter();
 
   const [items, setItems] = useState([]);
+  const [firstname, setFirstName] = useState('');
+  const [lastname, setLastName] = useState('');
+  const [username, setUserName] = useState('');
+  const [password, setPassWord] = useState('');
 
   useEffect(() => {
-    async function getUsers() {
+    async function getUser() {
       try {
         const res = await fetch(`http://localhost:3000/api/users/${id}`);
         if (!res.ok) {
@@ -18,29 +25,6 @@ export default function Page({ params }) {
         }
         const data = await res.json();
         setItems(data);
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
-    }
- 
-  getUsers()
-  //const interval  = setInterval(getUsers, 1000);
-  //return () => clearInterval(interval);
-}, []);
-
-  const [firstname, setFirstName] = useState('');
-  const [lastname, setLastName] = useState('');
-  const [username, setUserName] = useState('');
-  const [password, setPassWord] = useState('');
-  // const [id, setid] = useState('');
-
-  useEffect(() => {
-    async function getUser() {
-      try {
-        const res = await fetch(`http://localhost:3000/api/users/${id}`);
-        const data = await res.json();
-
-        // ตั้งค่า state ด้วยข้อมูลที่ได้รับ
         setFirstName(data.firstname);
         setLastName(data.lastname);
         setUserName(data.username);
@@ -55,28 +39,53 @@ export default function Page({ params }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
-    try {
-      const res = await fetch(`http://localhost:3000/api/users/${id}`, {
-        method: 'POST', // Use POST for updates
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ firstname, lastname, username, password }),
-      });
-  
-      if (!res.ok) {
-        throw new Error('Failed to update user');
+
+    Swal.fire({
+      title: 'ยืนยันการอัพเดทข้อมูล?',
+      text: "คุณต้องการบันทึกข้อมูลนี้ใช่หรือไม่?",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'ใช่, อัพเดทเลย!',
+      cancelButtonText: 'ยกเลิก',
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        try {
+          const res = await fetch(`http://localhost:3000/api/users/${id}`, {
+            method: 'PUT',
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ firstname, lastname, username, password }),
+          });
+
+          if (!res.ok) {
+            throw new Error('Failed to update user');
+          }
+
+          const result = await res.json();
+          console.log(result);
+
+          Swal.fire(
+            'สำเร็จ!',
+            'ข้อมูลผู้ใช้ถูกอัพเดทเรียบร้อยแล้ว.',
+            'success'
+          );
+
+          router.push('/Users');
+        } catch (error) {
+          Swal.fire(
+            'เกิดข้อผิดพลาด!',
+            'ไม่สามารถอัพเดทข้อมูลได้.',
+            'error'
+          );
+          console.error('Error:', error);
+        }
       }
-  
-      const result = await res.json();
-      console.log(result);
-    } catch (error) {
-      console.error('Error:', error);
-    }
+    });
   };
-  
 
   return (
     <>
@@ -84,10 +93,10 @@ export default function Page({ params }) {
       <div className="container">
         <div className="card">
           <div className="card-header bg-dark text-white">
-            Edit From {/*{JSON.stringify(items)} */}
+            Edit Form {/*{JSON.stringify(items)} */}
           </div>
           {items.map((item) => (
-          <div className="card-body">
+          <div className="card-body" key={item.id}>
             <form className="row g-3" onSubmit={handleSubmit}>
               <div className="col-md-6">
                 <label htmlFor="firstname" className="form-label">FirstName</label>
@@ -146,7 +155,7 @@ export default function Page({ params }) {
                 </div>
               </div>
               <div className="col-12">
-                <button type="submit" className="btn btn-outline-dark"><i className="bi bi-box-arrow-right"></i> Edit</button>
+                <button type="submit" className="btn btn-outline-dark"><i className="bi bi-box-arrow-right"></i> Update</button>
               </div>
             </form>
           </div>
