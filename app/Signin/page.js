@@ -40,7 +40,7 @@ export default function Page() {
           showConfirmButton: false
         }).then(() => {
           // เปลี่ยนไปยังหน้า http://localhost:3001/ หลังจากล็อกอินสำเร็จ
-          window.location.href = '/Home';
+          window.location.href = '/';
         });
       } else {
         setMessage(result.error);
