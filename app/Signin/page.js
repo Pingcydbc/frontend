@@ -40,7 +40,7 @@ export default function Page() {
           showConfirmButton: false
         }).then(() => {
           // เปลี่ยนไปยังหน้า http://localhost:3001/ หลังจากล็อกอินสำเร็จ
-          window.location.href = 'frontend042chayodom.vercel.app/';
+          window.location.href = '/Home';
         });
       } else {
         setMessage(result.error);
