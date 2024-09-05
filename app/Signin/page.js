@@ -38,7 +38,10 @@ export default function Page() {
           icon: 'success',
           timer: 1500, // แสดงการแจ้งเตือน 1.5 วินาที
           showConfirmButton: false
-        })
+        }).then(() => {
+          // เปลี่ยนไปยังหน้า http://localhost:3001/ หลังจากล็อกอินสำเร็จ
+          window.location.href = '';
+        });
       } else {
         setMessage(result.error);
         Swal.fire({
