@@ -11,6 +11,8 @@ export default function Page() {
   const [password, setPassWord] = useState('');
   const [message, setMessage] = useState(''); // เก็บข้อความแจ้งเตือน
 
+  const router = useRouter(); // ใช้ useRouter เพื่อเปลี่ยนเส้นทาง
+
   const handleLogin = async (e) => {
     e.preventDefault();
   
@@ -39,8 +41,8 @@ export default function Page() {
           timer: 1500, // แสดงการแจ้งเตือน 1.5 วินาที
           showConfirmButton: false
         }).then(() => {
-          // เปลี่ยนไปยังหน้า http://localhost:3001/ หลังจากล็อกอินสำเร็จ
-          router.push('/');//////////////////////
+          // เปลี่ยนไปยังหน้า '/' หลังจากล็อกอินสำเร็จ
+          router.push('/'); // ใช้ useRouter เพื่อเปลี่ยนเส้นทาง
         });
       } else {
         setMessage(result.error);
