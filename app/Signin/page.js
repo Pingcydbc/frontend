@@ -42,7 +42,7 @@ export default function Page() {
           showConfirmButton: false
         }).then(() => {
           // เปลี่ยนไปยังหน้า '/' และรีเฟรชหน้าเว็บ
-          router.push('/').then(() => window.location.reload()); // ใช้ useRouter เพื่อเปลี่ยนเส้นทางและรีเฟรชหน้าเว็บ
+          window.location.href = '/'; // ใช้ useRouter เพื่อเปลี่ยนเส้นทางและรีเฟรชหน้าเว็บ
         });
       } else {
         setMessage(result.error);
