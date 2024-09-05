@@ -15,7 +15,7 @@ export default function Page() {
     e.preventDefault();
   
     try {
-      const res = await fetch('http://localhost:3000/api/login', {
+      const res = await fetch('https://backend-alpha-wheat.vercel.app/api/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -40,7 +40,7 @@ export default function Page() {
           showConfirmButton: false
         }).then(() => {
           // เปลี่ยนไปยังหน้า http://localhost:3001/ หลังจากล็อกอินสำเร็จ
-          window.location.href = 'http://localhost:3001/';
+          window.location.href = 'frontend042chayodom.vercel.app/';
         });
       } else {
         setMessage(result.error);

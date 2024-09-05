@@ -18,7 +18,7 @@ export default function Page({ params }) {
   useEffect(() => {
     async function getUser() {
       try {
-        const res = await fetch(`http://localhost:3000/api/users/${id}`);
+        const res = await fetch(`https://backend-alpha-wheat.vercel.app/api/users/${id}`);
         if (!res.ok) {
           console.error('Failed to fetch data');
           return;
@@ -52,7 +52,7 @@ export default function Page({ params }) {
     }).then(async (result) => {
       if (result.isConfirmed) {
         try {
-          const res = await fetch(`http://localhost:3000/api/users/${id}`, {
+          const res = await fetch(`https://backend-alpha-wheat.vercel.app/api/users/${id}`, {
             method: 'PUT',
             headers: {
               'Accept': 'application/json',
