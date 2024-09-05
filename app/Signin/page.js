@@ -41,8 +41,8 @@ export default function Page() {
           timer: 1500, // แสดงการแจ้งเตือน 1.5 วินาที
           showConfirmButton: false
         }).then(() => {
-          // เปลี่ยนไปยังหน้า '/' หลังจากล็อกอินสำเร็จ
-          router.push('/'); // ใช้ useRouter เพื่อเปลี่ยนเส้นทาง
+          // เปลี่ยนไปยังหน้า '/' และรีเฟรชหน้าเว็บ
+          router.push('/').then(() => window.location.reload()); // ใช้ useRouter เพื่อเปลี่ยนเส้นทางและรีเฟรชหน้าเว็บ
         });
       } else {
         setMessage(result.error);
